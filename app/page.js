@@ -1,5 +1,5 @@
-'use client';
-import React, { useRef, useState, useEffect } from 'react';
+"use client";
+import React, { useRef, useState, useEffect } from "react";
 
 function Home() {
   const startTime = useRef(0);
@@ -31,6 +31,7 @@ function Home() {
     clearInterval(intervalRef.current);
     setCurrentTime(0);
     setLaps([]);
+    lapsRef.current = [];
     setLapVisible(false);
   };
 
@@ -43,8 +44,8 @@ function Home() {
   return (
     <div id="main">
       <section>
-        <h1 className='seconds-elapsed'>{currentTime.toFixed(3)}</h1>
-        <section className='buttons'>
+        <h1 className="seconds-elapsed">{currentTime.toFixed(3)}</h1>
+        <section className="buttons">
           <button className="start-btn" onClick={startStopwatch}>
             START
           </button>
@@ -59,10 +60,10 @@ function Home() {
           </button>
         </section>
       </section>
-      {lapVisible && (
-        <section className='lap-section'>
+      {lapVisible && laps.length > 0 && (
+        <section className="lap-section">
           <h2>Laps</h2>
-          <section className='laps'>
+          <section className="laps">
             {laps.map((lap, index) => (
               <p key={index}>{lap}</p>
             ))}
